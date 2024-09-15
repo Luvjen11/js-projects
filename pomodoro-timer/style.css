@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 400px;
+    text-align: center;
+    font-family: "Poppins", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.title {
+    margin: 10px;
+    font-size: 36px;
+    color: crimson;
+}
+
+.timer {
+    font-size: 72px;
+    color: crimson;
+}
+
+button {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 10px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: opacity .3s ease-in-out;
+}
+
+button:hover {
+    opacity: .7;
+}
+
+#Start {
+    background-color: #ff6f91;
+}
+
+#Stop {
+    background-color: #ff5678;
+}
+
+#Reset {
+    background-color: #f7a6b5;
+}
