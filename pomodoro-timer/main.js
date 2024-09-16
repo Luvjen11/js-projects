@@ -2,10 +2,12 @@ const startBtn = document.getElementById("Start");
 const stopBtn = document.getElementById("Stop");
 const resetBtn = document.getElementById("Reset");
 const timer = document.getElementById("timer");
-
+const pomodoro = document.getElementById("pomodoro");
+const shortBreak = document.getElementById("shortBreak");
+const longBreak = document.getElementById("longBreak");
 
 let interval;
-let timeRemaining = 1500;
+let timeRemaining = 0;
 
 function updateTimer() { // converts milliseconds
     let minutes = Math.floor(timeRemaining / 60);
@@ -15,17 +17,32 @@ function updateTimer() { // converts milliseconds
     timer.innerHTML = formattedTime;
 }
 
-function startTimer() {
+function startTimer() { // general start timer
     interval = setInterval(() => {
         timeRemaining--;
         updateTimer();
-        if (timeRemaining === 0) {
+        if (timeRemaining <= 0) {
             clearInterval(interval)
-            alert("Time's up!");
-            timeRemaining = 1500;
-            updateTimer();
         }
     }, 1000);
+}
+
+function pomodoroStart() {
+    timeRemaining = 1500;
+    updateTimer();
+    startTimer();
+}
+
+function shortStart() {
+    timeRemaining = 300;
+    updateTimer();
+    startTimer();
+}
+
+function longStart() {
+    timeRemaining = 600;
+    updateTimer();
+    startTimer();
 }
 
 function stopTimer() {
@@ -41,3 +58,8 @@ function resetTimer() {
 startBtn.addEventListener("click", startTimer);
 stopBtn.addEventListener("click", stopTimer);
 resetBtn.addEventListener("click", resetTimer);
+pomodoro.addEventListener("click", pomodoroStart);
+shortBreak.addEventListener("click", shortStart);
+longBreak.addEventListener("click", longStart)
+
+
