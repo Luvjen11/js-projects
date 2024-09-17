@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    font-family: "Poppins", Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #f0f0f0;
+    overflow: hidden;
+}
+
+
+.timer {
+    color: #ec3a5d;
+    font-size: 7rem;
+    font-weight: bolder;
+    margin: 40px auto;
+    text-shadow:  2px 2px #f8a5c2;
+    width: 600px;
+    text-align: center;
+}
+
+button {
+    background-color: #ed3b6a;
+    padding: 1.5rem 4rem;
+    margin: 1rem;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: opacity .3s ease-in-out;
+    font-weight: bold;
+    font-size: 2rem;
+    box-shadow: 2px 2px 10px rgba(0,0,0,.3);
+}
+
+button:hover {
+    opacity: .7;
+    background-color: #f8a5c2;
+    box-shadow: 2px 2px 10px rgba(0,0,0,.5);
+}
+
+button[disabled] {
+    opacity: .5;
+    cursor: default;
+}
