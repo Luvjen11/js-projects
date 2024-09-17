@@ -47,3 +47,15 @@ button[disabled] {
     opacity: .5;
     cursor: default;
 }
+
+@media (max-width: 800px) {
+    #timer{
+        font-size: 4rem;
+        width: 350px;
+    }
+
+    button{
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+    }
+}
