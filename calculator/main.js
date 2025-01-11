@@ -27,3 +27,7 @@ console.log(subtract(10, 4));
 console.log(multiply(2, 3)); 
 console.log(divide(8, 2)); 
 console.log(divide(5, 0));
+
+let num1;
+let num2;
+let operator;
