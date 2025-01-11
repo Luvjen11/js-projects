@@ -31,3 +31,25 @@ console.log(divide(5, 0));
 let num1;
 let num2;
 let operator;
+
+function operate(num1, num2, operator) {
+
+    if (operator === "+") {
+        return add(num1, num2);
+    }
+    else if (operator === "-" ) {
+        return subtract(num1,num2);
+    }
+    else if (operator === "*") {
+        return multiply(num1, num2);
+    }
+    else if (operator === "/") {
+        if (num2 === 0) {
+            return "Error: You can't divide by zero dummie!";
+        }
+        return divide(num1,num2);
+    }
+    else {
+        return "Error: enter a valid operation";
+    }
+}
