@@ -113,6 +113,11 @@ buttons.forEach((button) => {
         // square root
         else if (value === "√") {
 
+            if (display.value < "0" ) {
+                return "No sqrt for negatives!";
+            } else {
+                display.value = Math.sqrt(display.value).toFixed(2); // round to 2 decimals
+            }
         }
 
         // modulo 
