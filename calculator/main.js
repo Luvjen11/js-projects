@@ -110,13 +110,24 @@ buttons.forEach((button) => {
             display.value += "**";
         }
 
-        else if (value === "") {
+        // square root
+        else if (value === "√") {
 
         }
 
         // modulo 
         else if (value === "mod") {
             display.value += "%";
+        }
+
+        // inverse
+        else if (value === "1/x") {
+
+        }
+
+        // power of 10
+        else if (value === "10^x") {
+            display.value += "10**";
         }
 
         else {
