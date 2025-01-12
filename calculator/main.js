@@ -68,6 +68,15 @@ buttons.forEach((button) => {
             display.value = "0";
         }
 
+        // handle backspace button
+        else if (value === "←") {
+            if (display.value.lenght > 1) {
+                display.value = display.value.slice(0, -1);
+            } else {
+                display.value = "0";
+            }
+        }
+
         else if (value === "=") {
             try {
                 // evaluate expression
