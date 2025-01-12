@@ -123,6 +123,12 @@ buttons.forEach((button) => {
         // inverse
         else if (value === "1/x") {
 
+            if (display.value === "0") {
+                return "You can't divide by zero dummie!";
+            } else {
+                let num = display.value;
+                display.value = ("1"/num).toFixed(3); 
+            }
         }
 
         // power of 10
