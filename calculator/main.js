@@ -22,10 +22,10 @@ function divide(number1, number2) {
 }
 
 // testing if functions are working
-console.log(add(3, 5)); 
-console.log(subtract(10, 4)); 
-console.log(multiply(2, 3)); 
-console.log(divide(8, 2)); 
+console.log(add(3, 5));
+console.log(subtract(10, 4));
+console.log(multiply(2, 3));
+console.log(divide(8, 2));
 console.log(divide(5, 0));
 
 let num1;
@@ -37,8 +37,8 @@ function operate(num1, num2, operator) {
     if (operator === "+") {
         return add(num1, num2);
     }
-    else if (operator === "-" ) {
-        return subtract(num1,num2);
+    else if (operator === "-") {
+        return subtract(num1, num2);
     }
     else if (operator === "*") {
         return multiply(num1, num2);
@@ -47,9 +47,55 @@ function operate(num1, num2, operator) {
         if (num2 === 0) {
             return "Error: You can't divide by zero dummie!";
         }
-        return divide(num1,num2);
+        return divide(num1, num2);
     }
     else {
         return "Error: enter a valid operation";
     }
 }
+
+// select elements
+const display = document.getElementById("calc-display");
+const buttons = document.querySelectorAll(".buttons button");
+
+//eventlisteners
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const value = button.textContent;
+
+        // to clear value wne C is clicked
+        if (value === "C") {
+            display.value = "0";
+        }
+
+        else if (value === "=") {
+            try {
+                // evaluate expression
+                let expression = display.value.replace("×", "*").replace("÷", "/");
+
+                if (expression.includes("/0")) {
+                    display.value = "you can't divide by zero, dummie!";
+                } else {
+                    let result = eval(expression);
+
+                    if (result.toString().includes(".")) {
+                        result = Math.round(result * 100) / 100;
+                    }
+
+                    display.value = result;
+                }
+            } catch (error) {
+                display.value = "Error";
+            }
+        }
+
+        else {
+            if (display.value === "0") {
+                display.value = value;
+            } else {
+                display.value += value;
+            }
+        }
+    });
+});
+
