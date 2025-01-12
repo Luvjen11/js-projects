@@ -110,6 +110,15 @@ buttons.forEach((button) => {
             display.value += "**";
         }
 
+        else if (value === "") {
+
+        }
+
+        // modulo 
+        else if (value === "mod") {
+            display.value += "%";
+        }
+
         else {
             if (display.value === "0") {
                 display.value = value;
