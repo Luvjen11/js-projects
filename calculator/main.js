@@ -70,7 +70,7 @@ buttons.forEach((button) => {
 
         // handle backspace button
         else if (value === "←") {
-            if (display.value.lenght > 1) {
+            if (display.value.length > 1) {
                 display.value = display.value.slice(0, -1);
             } else {
                 display.value = "0";
@@ -85,6 +85,8 @@ buttons.forEach((button) => {
                 if (expression.includes("/0")) {
                     display.value = "you can't divide by zero, dummie!";
                 } else {
+                // evaluate expression
+
                     let result = eval(expression);
 
                     if (result.toString().includes(".")) {
@@ -96,6 +98,16 @@ buttons.forEach((button) => {
             } catch (error) {
                 display.value = "Error";
             }
+        }
+
+        // percentage symbol handling
+        else if (value === "%") {
+            display.value = parseFloat(display.value)/100;
+        }
+
+        //exponential operation
+        else if (value === "^") {
+            display.value += "**";
         }
 
         else {
