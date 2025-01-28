@@ -1,0 +1,87 @@
+/* Pink-themed Library App */
+
+body {
+    background-color: #ffe4e1; /* Soft pink background */
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+form {
+    background: #ffccd5;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+input, button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+input {
+    background: #fff0f3;
+    color: #333;
+}
+
+button {
+    background: #ff85a2;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff6384;
+}
+
+/* Book Display Section */
+.book-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.book-card {
+    background: #fff0f3;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+}
+
+.book-card h3 {
+    margin: 5px 0;
+    color: #ff6384;
+}
+
+.read-status {
+    font-weight: bold;
+    color: #d63384;
+}
+
+.remove-btn {
+    background: #ff6384;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background: #d63384;
+}
