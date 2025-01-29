@@ -110,15 +110,6 @@ button:hover {
     color: #d63384;
 }
 
-.remove-btn {
-    background: #ff6384;
-    color: white;
-    padding: 8px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.remove-btn:hover {
-    background: #d63384;
+.delete-btn {
+    margin: 10px;
 }

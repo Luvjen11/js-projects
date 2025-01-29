@@ -55,23 +55,39 @@ function displayBooks() {
             <p>Author: ${book.author}</p>
             <p>Pages: ${book.pages}</p>
             <p>Status: ${book.read}</p>
-            <button class="toggle-read">${book.read ? "Read" : "Not Read"}</button>
-            <button class="remove-btn">Remove</button>
+            <button class="toggle-read-btn" data-index="${index}">
+                ${book.read === "read" ? "Read" : "Not Read"}
+            </button>
+            <button class="remove-btn" data-index="${index}">Remove</button>
             
         `;
 
-        // add "Remove" button;
-        bookCard.querySelector(".remove-btn").addEventListener("click",() =>{
-            myLibrary.splice(index, 1); // remove book from library;
-            displayBooks(); // update display;  
-        });
-
-        // add "Toggle Read" button;
-        newbook.querySelector(".toggle-read").addEventListener("click", () => {
-            book.read = !book.read;
-            displayBooks(); // update display;
-        });
         // append book card to the book display section;
         bookContainer.appendChild(bookCard);
     });
+
+        // add event listener to the remove button;
+        document.querySelectorAll(".remove-btn").forEach(button => {
+            button.addEventListener("click", removeBook);
+        });
+
+        // add event listener to the toggle read button;
+        document.querySelectorAll(".toggle-read-btn").forEach(button => {
+            button.addEventListener("click", toggleRead);
+        });
+
+}
+
+// add "Remove" button;
+function removeBook(e) {
+    myLibrary.splice(e.target.dataset.index, 1);
+    displayBooks();
+}
+
+
+// add "Toggle Read" button;
+function toggleRead(event) {
+    const index = event.target.getAttribute("data-index");
+    myLibrary[index].read = myLibrary[index].read === "read" ? "not-read" : "read";
+    displayBooks(); // Refresh display
 }
