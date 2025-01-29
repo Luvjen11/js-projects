@@ -113,3 +113,11 @@ button:hover {
 .delete-btn {
     margin: 10px;
 }
+
+.book-image {
+    width: 120px;  /* Fixed width */
+    height: 180px; /* Fixed height */
+    object-fit: cover; /* Ensures the image maintains aspect ratio */
+    border-radius: 5px;
+    margin-bottom: 10px;
+}

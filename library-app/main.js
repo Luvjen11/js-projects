@@ -1,7 +1,8 @@
 const myLibrary = [];
 
 //constructor
-function Book(title, author, pages, read) {
+function Book(bookCover, title, author, pages, read) {
+  this.bookCover = bookCover;
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -10,6 +11,8 @@ function Book(title, author, pages, read) {
 
 // add new book
 function addBookToLibrary() {
+    const fileInput = document.getElementById("book-cover");
+    const file = fileInput.files[0]; // Get the uploaded file
   const title = document.getElementById("book").value;
   const author = document.getElementById("author").value;
   const pages = document.getElementById("pages").value;
@@ -17,40 +20,41 @@ function addBookToLibrary() {
     document.querySelector('input[name="read"]:checked')?.value || "not-read";
 
   // Ensure all fields are filled
-  if (!title || !author || !pages) {
+  if (!file || !title || !author || !pages) {
     alert("Please fill in all fields!");
     return;
   }
 
-  const newBook = new Book(title, author, pages, read);
-  myLibrary.push(newBook);
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = function () {
+      const bookCover = reader.result; // Convert image to Base64 URL
 
-  // Reset the form after submission
-  document.querySelector("form").reset();
+      const newBook = new Book(bookCover, title, author, pages, read);
+      myLibrary.push(newBook);
 
-  // Update the display
-  displayBooks();
+      document.querySelector("form").reset();
+      displayBooks();
+  };
 }
 
 // display the new added book
 function displayBooks() {
+  // select the book display container
+  const bookContainer = document.querySelector("book-container");
+  //clear current book display;
+  bookContainer.innerHTML = "";
 
-    // select the book display container
-    const bookContainer = document.querySelector("book-container");
-        //clear current book display;
-    bookContainer.innerHTML = "";
-    
-    // loop through the library and display each book;
-    myLibrary.forEach((book, index) => {
+  // loop through the library and display each book;
+  myLibrary.forEach((book, index) => {
+    // create a new book card element;
 
-        // create a new book card element;
-        
-        const bookCard = document.createElement("div");
-        bookCard.classList.add("book-card");
+    const bookCard = document.createElement("div");
+    bookCard.classList.add("book-card");
 
-
-        // set book details (title, author, pages, read status);
-        bookCard.innerHTML = `
+    // set book details (title, author, pages, read status);
+    bookCard.innerHTML = `
+            <img src="${book.bookCover}" alt="book cover" class="book-image"/>
             <h3>${book.title}</h3>
             <p>Author: ${book.author}</p>
             <p>Pages: ${book.pages}</p>
@@ -62,32 +66,31 @@ function displayBooks() {
             
         `;
 
-        // append book card to the book display section;
-        bookContainer.appendChild(bookCard);
-    });
+    // append book card to the book display section;
+    bookContainer.appendChild(bookCard);
+  });
 
-        // add event listener to the remove button;
-        document.querySelectorAll(".remove-btn").forEach(button => {
-            button.addEventListener("click", removeBook);
-        });
+  // add event listener to the remove button;
+  document.querySelectorAll(".remove-btn").forEach((button) => {
+    button.addEventListener("click", removeBook);
+  });
 
-        // add event listener to the toggle read button;
-        document.querySelectorAll(".toggle-read-btn").forEach(button => {
-            button.addEventListener("click", toggleRead);
-        });
-
+  // add event listener to the toggle read button;
+  document.querySelectorAll(".toggle-read-btn").forEach((button) => {
+    button.addEventListener("click", toggleRead);
+  });
 }
 
 // add "Remove" button;
 function removeBook(e) {
-    myLibrary.splice(e.target.dataset.index, 1);
-    displayBooks();
+  myLibrary.splice(e.target.dataset.index, 1);
+  displayBooks();
 }
-
 
 // add "Toggle Read" button;
 function toggleRead(event) {
-    const index = event.target.getAttribute("data-index");
-    myLibrary[index].read = myLibrary[index].read === "read" ? "not-read" : "read";
-    displayBooks(); // Refresh display
+  const index = event.target.getAttribute("data-index");
+  myLibrary[index].read =
+    myLibrary[index].read === "read" ? "not-read" : "read";
+  displayBooks(); // Refresh display
 }
