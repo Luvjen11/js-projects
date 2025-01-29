@@ -33,4 +33,45 @@ function addBookToLibrary() {
 }
 
 // display the new added book
-function displayBooks() {}
+function displayBooks() {
+
+    // select the book display container
+    const bookContainer = document.querySelector("book-container");
+        //clear current book display;
+    bookContainer.innerHTML = "";
+    
+    // loop through the library and display each book;
+    myLibrary.forEach((book, index) => {
+
+        // create a new book card element;
+        
+        const bookCard = document.createElement("div");
+        bookCard.classList.add("book-card");
+
+
+        // set book details (title, author, pages, read status);
+        bookCard.innerHTML = `
+            <h3>${book.title}</h3>
+            <p>Author: ${book.author}</p>
+            <p>Pages: ${book.pages}</p>
+            <p>Status: ${book.read}</p>
+            <button class="toggle-read">${book.read ? "Read" : "Not Read"}</button>
+            <button class="remove-btn">Remove</button>
+            
+        `;
+
+        // add "Remove" button;
+        bookCard.querySelector(".remove-btn").addEventListener("click",() =>{
+            myLibrary.splice(index, 1); // remove book from library;
+            displayBooks(); // update display;  
+        });
+
+        // add "Toggle Read" button;
+        newbook.querySelector(".toggle-read").addEventListener("click", () => {
+            book.read = !book.read;
+            displayBooks(); // update display;
+        });
+        // append book card to the book display section;
+        bookContainer.appendChild(bookCard);
+    });
+}
